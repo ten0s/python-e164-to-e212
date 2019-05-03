@@ -1,0 +1,2 @@
+git+https://github.com/ten0s/phone-iso3166.git@WG#egg=phone-iso3166
+git+https://github.com/ten0s/python-phonenumbers.git@WG#egg=phonenumbers
