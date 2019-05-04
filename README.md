@@ -69,7 +69,7 @@ pip install -U -r requirements.txt
 
 | Country | Total | No Name | No ID |
 |   ---   |  ---  |   ---   |  ---  |
-| Russia | 163309 | 6990 | 233 |
+| Russia | 163309 | 363 | 235 |
 | Ukraine | 40178 | 13 | 0 |
 | Belarus | 12571 | 0 | 1 |
 | Poland | 7534 | 2290 | 6 |

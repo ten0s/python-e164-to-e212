@@ -16,7 +16,7 @@ function countries() {
 
 function filter_country() {
     country="$1"
-    tail -n+2 "$FILE" | grep -i "$country" | cut -d';' -f5 | sort | uniq > "$country".txt
+    tail -n+2 "$FILE" | grep "$country" | cut -d';' -f5 | sort | uniq > "$country".txt
 }
 
 function process_country() {
@@ -45,3 +45,5 @@ else
     process_country "${COUNTRY}"
     [[ "$CLEANUP" =~ (y|Y).* ]] && cleanup_country "${COUNTRY}"
 fi
+
+exit 0
