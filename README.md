@@ -53,7 +53,20 @@ cd python-e164-to-e212
 pip install -U -r requirements.txt
 </pre>
 
-## Current stats
+## Run country stats
+<pre>
+./stats.sh FILE Belarus
+</pre>
+
+| Country | Total | No Name | No ID |
+|   ---   |  ---  |   ---   |  ---  |
+| Belarus | 12571 | 0 | 1 |
+
+## Run all stats
+<pre>
+./stats.sh FILE
+</pre>
+
 | Country | Total | No Name | No ID |
 |   ---   |  ---  |   ---   |  ---  |
 | Russia | 163309 | 6990 | 233 |
