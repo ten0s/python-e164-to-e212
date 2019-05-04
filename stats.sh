@@ -1,12 +1,13 @@
 #!/bin/bash
 
-if [[ $# -ne 1 ]] && [[ $# -ne 2 ]] ; then
-    echo "Usage: stats.sh CSV_FILE [COUNTRY]"
+if [[ $# -ne 1 ]] && [[ $# -ne 2 ]] && [[ $# -ne 3 ]]; then
+    echo "Usage: stats.sh CSV_FILE [COUNTRY=ALL [CLEANUP=YES]]"
     exit 1
 fi
 
 FILE="$1"
-WHAT=${2:-ALL}
+COUNTRY=${2:-ALL}
+CLEANUP=${3:-YES}
 
 function countries() {
     # sort countries by freqs desc
@@ -21,20 +22,26 @@ function filter_country() {
 function process_country() {
     country="$1"
     filter_country "$country"
-    python3 e164_to_e212.py -f "$country".txt > "$country"_res.txt
+    python3 e164_to_e212.py -f "$country".txt > "$country"-res.txt
     total=$(grep -c "" "$country".txt)
-    no_name=$(grep -c "!name" "$country"_res.txt)
-    no_id=$(grep -c "!id" "$country"_res.txt)
+    no_name=$(grep -c "!name" "$country"-res.txt)
+    no_id=$(grep -c "!id" "$country"-res.txt)
     echo "| $country | $total | $no_name | $no_id |"
-    rm -f "$country".txt "$country"_res.txt
+}
+
+function cleanup_country() {
+    country="$1"
+    rm -f "$country".txt "$country"-res.txt
 }
 
 echo "| Country | Total | No Name | No ID |"
 echo "|   ---   |  ---  |   ---   |  ---  |"
-if [[ "$WHAT" == "ALL" ]]; then
+if [[ "$COUNTRY" == "ALL" ]]; then
     for country in $(countries); do
         process_country "$country"
+        [[ "$CLEANUP" =~ (y|Y).* ]] && cleanup_country "$country"
     done
 else
-    process_country "${WHAT^}"
+    process_country "${COUNTRY}"
+    [[ "$CLEANUP" =~ (y|Y).* ]] && cleanup_country "${COUNTRY}"
 fi
