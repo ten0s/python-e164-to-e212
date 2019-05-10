@@ -1,4 +1,4 @@
-## Setup project environment
+## Setup environment
 <pre>
 $ git clone git@github.com:ten0s/python-e164-to-e212.git
 $ cd python-e164-to-e212
@@ -51,7 +51,8 @@ $ virtualenv -p python3 env --no-site-packages
 $ source env/bin/activate
 $ pip install -r requirements.txt
 ...
-Make changes
+$ python get_e212_wiki.py
+Wrote phone_iso3166/e212_names.py
 ...
 $ git commit -m "Some message"
 $ git push origin WG
@@ -64,7 +65,7 @@ $ virtualenv -p python3 env --no-site-packages
 $ source env/bin/activate
 $ pip install -r requirements.txt
 ...
-Make changes
+Make changes in resources/carrier/en/*.txt
 ...
 $ make -C tools/python/ metaclean
 $ make -C tools/python/ all
