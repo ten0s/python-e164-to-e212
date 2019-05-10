@@ -78,11 +78,11 @@ def main():
     parser.add_argument("-p", "--phone",
                         help="E.164 formatted phone numbers")
     parser.add_argument("-f", "--file", type=argparse.FileType("r"),
-                        help="Input file of E.164 formatted phone numbers")
-    parser.add_argument("-v", "--verbose",
-                        help="Verbosity level", action="count", default=0)
+                        help="input file of E.164 formatted phone numbers")
     parser.add_argument("-e", "--export",
-                        help="Export to")
+                        help="export to file")
+    parser.add_argument("-v", "--verbose",
+                        help="verbosity level", action="count", default=0)
     args = parser.parse_args()
     if args.phone != None:
         phone = args.phone
