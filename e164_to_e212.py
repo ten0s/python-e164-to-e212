@@ -7,6 +7,9 @@ from phonenumbers.carrier import *
 from phonenumbers import phonenumberutil
 
 countries = {
+    "GG": "GB",
+    "JE": "GB",
+    "IM": "GB",
     "VI": "US"
 }
 
@@ -15,35 +18,36 @@ def e164_to_e212(phone, verbose=0):
 
     try:
         phone_parsed = phonenumbers.parse(phone)
-        if verbose > 1: print("info: " + str(phone_parsed))
+        if verbose > 1: print("phone info: " + str(phone_parsed))
 
-        country = phone_iso3166.country.phone_country(phone)
+        country = phonenumberutil.region_code_for_number(phone_parsed)
+        if not country:
+            country = phone_iso3166.country.phone_country(phone)
+
         if country in countries:
             country2 = countries[country]
-            if verbose > 0: print("country: " + country + " -> " + country2)
+            if verbose > 0: print("   country: " + country + " -> " + country2)
             country = country2
         else:
-            if verbose > 0: print("country: " + country)
-
-        region_code = phonenumberutil.region_code_for_number(phone_parsed)
-        if verbose > 1: print("country2: " + region_code)
-
-        network = phonenumbers.carrier.name_for_valid_number(phone_parsed, "en").lower()
-        if verbose > 0: print("network: " + network)
-        if network == "":
-            return ("error", "name_not_found")
+            if verbose > 0: print("   country: " + country)
 
         networks = phone_iso3166.network.country_networks(country)
-        if verbose > 0: print("networks: " + str(networks))
+        if verbose > 0: print("  networks: " + str(networks))
+
+        name = phonenumbers.carrier.name_for_valid_number(phone_parsed, "en").lower()
+        if verbose > 0: print("      name: " + str(name))
+        if not name:
+            return ("error", "name_not_found")
+        names = name.split("/")
+
+        for name in names:
+            for (mcc, mnc, ntw) in networks:
+                if ntw.lower().find(name) != -1:
+                    return ("ok", "{}{:02d}".format(mcc, mnc))
+        return ("error", "id_not_found")
     except Exception as e:
         print(phone)
         raise
-
-    if network != "":
-        for (mcc, mnc, ntw) in networks:
-            if ntw.lower().find(network) != -1:
-                return ("ok", "{}{:02d}".format(mcc, mnc))
-    return ("error", "id_not_found")
 
 def main():
     parser = argparse.ArgumentParser()
