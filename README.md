@@ -47,6 +47,9 @@ $ python3 e164_to_e212.py -p 7900123456789 -v
 <pre>
 $ git clone --branch WG git@github.com:ten0s/phone-iso3166.git
 $ cd phone-iso3166
+$ virtualenv -p python3 env --no-site-packages
+$ source env/bin/activate
+$ pip install -r requirements.txt
 ...
 Make changes
 ...
@@ -57,6 +60,9 @@ $ git push origin WG
 <pre>
 $ git clone --branch WG https://github.com/ten0s/python-phonenumbers.git
 $ cd python-phonenumbers
+$ virtualenv -p python3 env --no-site-packages
+$ source env/bin/activate
+$ pip install -r requirements.txt
 ...
 Make changes
 ...
