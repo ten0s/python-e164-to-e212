@@ -88,9 +88,9 @@ $ ./stats.sh FILE Belarus
 |   ---   |  ---  |   ---   |  ---  |
 | Belarus | 12571 | 0 | 1 |
 
-## Run country stats, leave temp files and filter not resolved names
+## Run country stats, don't remove temp files and see unresolved names
 <pre>
-$ ./stats.sh FILE Belarus NO && grep '!name' Belarus-res.txt | head
+$ ./stats.sh FILE Belarus NO && grep '!name' Belarus-res.txt
 </pre>
 
 ## Run all stats
