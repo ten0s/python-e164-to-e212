@@ -102,7 +102,7 @@ $ ./stats.sh FILE
 | Russia | 163309 | 363 | 235 |
 | Ukraine | 40178 | 13 | 0 |
 | Belarus | 12571 | 0 | 1 |
-| Poland | 7534 | 2290 | 6 |
+| Poland | 7534 | 1201 | 6 |
 | Kazakhstan | 7485 | 3 | 0 |
 | USA | 4514 | 4514 | 0 |
 | Germany | 4427 | 0 | 0 |
@@ -113,14 +113,14 @@ $ ./stats.sh FILE
 | Uzbekistan | 1578 | 247 | 204 |
 | UK | 1358 | 0 | 216 |
 | Hungary | 1145 | 6 | 0 |
-| Moldova | 1105 | 9 | 267 |
+| Moldova | 1105 | 9 | 0 |
 | Romania | 1082 | 4 | 90 |
 | Brazil | 753 | 343 | 113 |
 | Vietnam | 720 | 163 | 3 |
 | Canada | 720 | 720 | 0 |
 | Serbia | 687 | 4 | 0 |
 | Italy | 680 | 26 | 0 |
-| Spain | 617 | 13 | 52 |
+| Spain | 617 | 13 | 47 |
 | Slovakia | 595 | 16 | 19 |
 | Netherlands | 519 | 56 | 0 |
 | Taiwan | 456 | 5 | 18 |
@@ -131,7 +131,7 @@ $ ./stats.sh FILE
 | Sweden | 378 | 378 | 0 |
 | Georgia | 344 | 0 | 88 |
 | Croatia | 343 | 2 | 101 |
-| Azerbaijan | 341 | 2 | 265 |
+| Azerbaijan | 341 | 2 | 0 |
 | Lithuania | 329 | 27 | 250 |
 | Mexico | 294 | 294 | 0 |
 | Israel | 282 | 0 | 117 |
