@@ -1,4 +1,4 @@
-## Setup environment
+## Setup project's environment
 <pre>
 $ git clone git@github.com:ten0s/python-e164-to-e212.git
 $ cd python-e164-to-e212
@@ -43,7 +43,7 @@ $ python3 e164_to_e212.py -p 7900123456789 -v
 7900123456789;25020
 </pre>
 
-## Modify dependencies
+## Modify project's dependencies
 <pre>
 $ git clone --branch WG git@github.com:ten0s/phone-iso3166.git
 $ cd phone-iso3166
@@ -73,7 +73,7 @@ $ git commit -m "Some message"
 $ git push origin WG
 </pre>
 
-## Update project
+## Update project's dependencies
 <pre>
 $ cd python-e164-to-e212
 $ pip install -U -r requirements.txt
