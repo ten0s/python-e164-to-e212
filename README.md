@@ -9,7 +9,7 @@ $ pip install -r requirements.txt
 
 ## Example calls
 
-### Export prefixes to mccmnc to Erlang module
+### Export prefix -> mccmnc map to Erlang module
 <pre>
 $ python3 e164_to_e212.py -e e164_to_e212.erl
 $ head e164_to_e212.erl
