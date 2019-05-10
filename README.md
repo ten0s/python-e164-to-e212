@@ -99,7 +99,7 @@ $ ./stats.sh FILE
 
 | Country | Total | No Name | No ID |
 |   ---   |  ---  |   ---   |  ---  |
-| Russia | 163309 | 363 | 235 |
+| Russia | 163309 | 363 | 4 |
 | Ukraine | 40178 | 13 | 0 |
 | Belarus | 12571 | 0 | 1 |
 | Poland | 7534 | 1201 | 6 |
