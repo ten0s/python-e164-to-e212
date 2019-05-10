@@ -1,6 +1,3 @@
-./stats.sh 'smscoin grouped v.2.csv' Russia NO && grep '!name' Russia-res.txt | head
-
-
 ## Setup project environment
 <pre>
 $ git clone git@github.com:ten0s/python-e164-to-e212.git
@@ -11,6 +8,7 @@ $ pip install -r requirements.txt
 </pre>
 
 ## Example calls
+
 ### Export prefixes to mccmnc to Erlang module
 <pre>
 $ python3 e164_to_e212.py -e e164_to_e212.erl
@@ -82,6 +80,11 @@ $ ./stats.sh FILE Belarus
 | Country | Total | No Name | No ID |
 |   ---   |  ---  |   ---   |  ---  |
 | Belarus | 12571 | 0 | 1 |
+
+## Run country stats, leave temp files and filter not resolved names
+<pre>
+$ ./stats.sh FILE Belarus NO && grep '!name' Belarus-res.txt | head
+</pre>
 
 ## Run all stats
 <pre>
