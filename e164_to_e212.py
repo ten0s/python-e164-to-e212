@@ -116,10 +116,11 @@ def main():
             f.write("-export([lookup/1]).\n")
             f.write("\n")
             f.write("-spec lookup(binary()) -> {ok, binary()} | {error, not_found}.\n")
+            f.write('lookup(<<"+", Phone/binary>>) -> lookup(Phone);\n')
             for (prefix, _name) in CARRIER_DATA.items():
                 (ret, mccmnc) = e164_to_e212(prefix, args.verbose)
                 if ret == "ok":
-                    f.write('lookup(<<"{}">>) -> {{ok, <<"{}">>}};\n'.format(prefix, mccmnc))
+                    f.write('lookup(<<"{}", _/binary>>) -> {{ok, <<"{}">>}};\n'.format(prefix, mccmnc))
             f.write("lookup(_) -> {error, not_found}.\n")
     else:
         parser.print_help()

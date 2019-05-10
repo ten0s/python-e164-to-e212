@@ -12,7 +12,7 @@ $ pip install -r requirements.txt
 ### Export prefix -> mccmnc map to Erlang module
 <pre>
 $ python3 e164_to_e212.py -e e164_to_e212.erl
-$ head e164_to_e212.erl
+$ cat e164_to_e212.erl
 -module(e164_to_e212).
 
 %% Auto-generated file, do not edit by hand
@@ -22,7 +22,11 @@ $ head e164_to_e212.erl
 -export([lookup/1]).
 
 -spec lookup(binary()) -> {ok, binary()} | {error, not_found}.
-lookup(<<"1242357">>) -> {ok, <<"36439">>};
+lookup(<<"+", Phone/binary>>) -> lookup(Phone);
+lookup(<<"1242357", _/binary>>) -> {ok, <<"36439">>};
+...
+lookup(<<"99894", _/binary>>) -> {ok, <<"43405">>};
+lookup(_) -> {error, not_found}.
 </pre>
 
 ### Lookup BY number
