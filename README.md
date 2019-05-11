@@ -65,9 +65,6 @@ $ git push origin WG
 <pre>
 $ git clone --branch WG https://github.com/ten0s/python-phonenumbers.git
 $ cd python-phonenumbers
-$ virtualenv -p python3 env --no-site-packages
-$ source env/bin/activate
-$ pip install -r requirements.txt
 ...
 Make changes in resources/carrier/en/*.txt
 ...
@@ -112,7 +109,7 @@ $ ./stats.sh FILE
 | USA | 4514 | 4514 | 0 |
 | Germany | 4427 | 0 | 0 |
 | Czech | 2596 | 163 | 0 |
-| France | 2027 | 701 | 545 |
+| France | 2027 | 16 | 0 |
 | Kyrgyzstan | 1634 | 2 | 657 |
 | Turkey | 1591 | 1 | 487 |
 | Uzbekistan | 1578 | 247 | 204 |
