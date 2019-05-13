@@ -53,11 +53,15 @@ def e164_to_e212(number, verbose=0):
             return ("error", "name_not_found")
         names = name.split("/")
 
+        found = []
         for name in names:
             for (mcc, mnc, ntw) in networks:
                 if ntw.lower().find(name) != -1:
-                    return ("ok", "{}{:02d}".format(mcc, mnc))
-        return ("error", "id_not_found")
+                    found.append("{}{:02d}".format(mcc, mnc))
+        if found:
+            return ("ok", found)
+        else:
+            return ("error", "id_not_found")
     except Exception as e:
         print(number)
         raise
@@ -88,7 +92,7 @@ def main():
         phone = args.phone
         (ret, res) = e164_to_e212(phone, args.verbose)
         if ret == "ok":
-            print(phone + ";" + res)
+            print(phone + ";" + ",".join(res))
         else:
             print(phone + "!" + res)
     elif args.file != None:
@@ -98,7 +102,7 @@ def main():
                 if not phone: break
                 (ret, res) = e164_to_e212(phone, args.verbose)
                 if ret == "ok":
-                    print(phone + ";" + res)
+                    print(phone + ";" + ",".join(res))
                 else:
                     print(phone + "!" + res)
             except KeyboardInterrupt:
@@ -115,12 +119,14 @@ def main():
             f.write("\n")
             f.write("-export([lookup/1]).\n")
             f.write("\n")
-            f.write("-spec lookup(binary()) -> {ok, binary()} | {error, not_found}.\n")
+            f.write("-spec lookup(binary()) -> {ok, [binary()]} | {error, not_found}.\n")
             f.write('lookup(<<"+", Phone/binary>>) -> lookup(Phone);\n')
             for (prefix, _name) in CARRIER_DATA.items():
-                (ret, mccmnc) = e164_to_e212(prefix, args.verbose)
+                (ret, mccmncs) = e164_to_e212(prefix, args.verbose)
                 if ret == "ok":
-                    f.write('lookup(<<"{}", _/binary>>) -> {{ok, <<"{}">>}};\n'.format(prefix, mccmnc))
+                    mccmncs = map(lambda mccmnc: '<<"{}">>'.format(mccmnc), mccmncs)
+                    mccmncs = ",".join(mccmncs)
+                    f.write('lookup(<<"{}", _/binary>>) -> {{ok, [{}]}};\n'.format(prefix, mccmncs))
             f.write("lookup(_) -> {error, not_found}.\n")
     else:
         parser.print_help()

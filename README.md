@@ -21,11 +21,11 @@ $ cat e164_to_e212.erl
 
 -export([lookup/1]).
 
--spec lookup(binary()) -> {ok, binary()} | {error, not_found}.
+-spec lookup(binary()) -> {ok, [binary()]} | {error, not_found}.
 lookup(<<"+", Phone/binary>>) -> lookup(Phone);
-lookup(<<"1242357", _/binary>>) -> {ok, <<"36439">>};
+lookup(<<"1242357", _/binary>>) -> {ok, [<<"36439">>]};
 ...
-lookup(<<"99894", _/binary>>) -> {ok, <<"43405">>};
+lookup(<<"99899", _/binary>>) -> {ok, [<<"43403">>,<<"43408">>]};
 lookup(_) -> {error, not_found}.
 </pre>
 
@@ -40,11 +40,11 @@ $ python3 e164_to_e212.py -p 375291234567 -v
 
 ### Lookup RU number
 <pre>
-$ python3 e164_to_e212.py -p 7900123456789 -v
-   country: RU
-  networks: [(250, 1, 'MTS | Mobile TeleSystems'), (250, 2, 'MegaFon | MegaFon PJSC'), (250, 6, 'Skylink | CJSC Saratov System of Cellular Communications'), (250, 8, 'Vainah Telecom | CS "VainahTelecom"'), (250, 9, 'Skylink | Khabarovsky Cellular Phone'), (250, 11, 'Yota | Scartel'), (250, 16, 'Miatel | Miatel'), (250, 20, 'Tele2 | Tele2'), (250, 21, 'GlobalTel | JSC "GlobalTel"'), (250, 22, 'Vainakh Telecom'), (250, 23, 'Thuraya | GTNT'), (250, 27, 'Letai | Tattelecom'), (250, 29, 'Iridium | Iridium Communications'), (250, 32, 'Win Mobile | K-Telecom'), (250, 33, 'Sevmobile | Sevtelekom'), (250, 34, 'Krymtelekom | Krymtelekom'), (250, 35, 'MOTIV | EKATERINBURG-2000'), (250, 50, 'MTS | Bezlimitno.ru'), (250, 60, 'Volna mobile | KTK Telecom'), (250, 62, 'Tinkoff Mobile | Tinkoff Mobile'), (250, 99, 'Beeline | OJSC Vimpel-Communications')]
-      name: tele2
-7900123456789;25020
+$ python3 e164_to_e212.py -p 33601000000 -v
+    country: FR
+   networks: [(208, 1, 'Orange | Orange S.A.'), (208, 2, 'Orange | Orange S.A.'), (208, 3, 'MobiquiThings | MobiquiThings'), (208, 4, "Sisteer | Societe d'ingenierie systeme telecom et reseaux"), (208, 5, 'Globalstar Europe'), (208, 6, 'Globalstar Europe'), (208, 7, 'Globalstar Europe'), (208, 8, 'SFR | Altice'), (208, 9, 'SFR | Altice'), (208, 10, 'SFR | Altice'), (208, 11, 'SFR | Altice'), (208, 13, 'SFR | Altice'), (208, 14, 'SNCF Réseau | SNCF Réseau'), (208, 15, 'Free Mobile | Iliad'), (208, 16, 'Free Mobile | Iliad'), (208, 17, 'LEGOS | Local Exchange Global Operation Services'), (208, 20, 'Bouygues | Bouygues Telecom'), (208, 21, 'Bouygues | Bouygues Telecom'), (208, 22, 'Transatel Mobile | Transatel'), (208, 23, 'Syndicat mixte ouvert Charente Numérique'), (208, 24, 'MobiquiThings | MobiquiThings'), (208, 25, 'LycaMobile | LycaMobile'), (208, 26, 'NRJ Mobile | Euro-Information Telecom SAS'), (208, 27, 'Coriolis Telecom'), (208, 28, 'Airbus Defence and Space SAS'), (208, 30, 'Syma Mobile'), (208, 31, 'Vectone Mobile | Mundio Mobile'), (208, 88, 'Bouygues | Bouygues Telecom'), (208, 91, 'Orange S.A.'), (208, 94, 'Halys')]
+       name: sfr
+33601000000;20808,20809,20810,20811,20813
 </pre>
 
 ## Modify project's dependencies
