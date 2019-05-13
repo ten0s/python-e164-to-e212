@@ -38,7 +38,7 @@ $ python3 e164_to_e212.py -p 375291234567 -v
 375291234567;25701
 </pre>
 
-### Lookup RU number
+### Lookup FR number
 <pre>
 $ python3 e164_to_e212.py -p 33601000000 -v
     country: FR
