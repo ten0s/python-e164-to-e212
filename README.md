@@ -55,6 +55,9 @@ $ virtualenv -p python3 env --no-site-packages
 $ source env/bin/activate
 $ pip install -r requirements.txt
 ...
+
+NB! Wiki page has changed. phone_iso3166/e212_names.py scrapper needs to be reviewed
+
 $ python get_e212_wiki.py
 Wrote phone_iso3166/e212_names.py
 ...
